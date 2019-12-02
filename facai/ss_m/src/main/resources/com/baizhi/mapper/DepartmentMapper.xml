@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.DepartmentMapper">
+    <select id="findAll" resultType="Department">
+        select * from department
+    </select>
+
+    <select id="find" resultType="Department">
+        select * from department where id=#{id}
+    </select>
+    <update id="updateAdmin" >
+        update department set number = #{number},name = #{name} where id =#{id}
+    </update>
+
+    <insert id="addDepartment">
+        insert into department(number,name) values (#{number},#{name})
+    </insert>
+</mapper>

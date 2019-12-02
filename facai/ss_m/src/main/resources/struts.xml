@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="admin" namespace="/admin" extends="struts-default">
+        <action name="*" class="adminAction" method="{1}">
+            <result name="ok" type="redirectAction">
+                <param name="namespace" >/d</param>
+                <param name="actionName" >findAll</param>
+            </result>
+            <result name="no">/login.jsp</result>
+            <result name="save">/login.jsp</result>
+        </action>
+    </package>
+
+    <package name="d" extends="struts-default" namespace="/d">
+        <action name="*" class="departmentAction" method="{1}">
+            <result name="findAll">/departments.jsp</result>
+            <result name="find">/updateDepartment.jsp</result>
+            <result name="updateAdmin">/departments.jsp</result>
+            <result name="addDepartment">/departments.jsp</result>
+        </action>
+    </package>
+
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="*" class="userAction" method="{1}">
+            <param name="xdPath">/img</param>
+            <result name="findAll">/emplist.jsp</result>
+            <result name="saveUser" type="redirectAction">
+                <param name="namespace">/d</param>
+                <param name="actionName">findAll</param>
+            </result>
+            <result name="deleteUser">/emplist.jsp</result>
+            <result name="findUser">/updateEmp.jsp</result>
+            <result name="updateUser" type="redirectAction">
+                <param name="namespace">/d</param>
+                <param name="actionName">findAll</param>
+            </result>
+        </action>
+        <action name="showDep" class="userAction" method="showDep"/>
+    </package>
+</struts>
